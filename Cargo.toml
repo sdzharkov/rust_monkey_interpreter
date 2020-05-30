@@ -1,0 +1,17 @@
+[package]
+name = "monkey_interpreter"
+version = "0.1.0"
+authors = ["Stephan Zharkov <stephan.zharkov@gmail.com>"]
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+lexer = { path = "lexer" }
+token = { path = "token" }
+
+[workspace]
+members = [
+  "lexer",
+  "token"
+]
