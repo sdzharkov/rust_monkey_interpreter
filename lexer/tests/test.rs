@@ -1,4 +1,5 @@
-use token::{Token, TokenType, Tokenizer};
+use token::{Token, TokenType};
+use lexer::{Lexer};
 
 #[test]
 fn test_next_token() {
@@ -39,10 +40,12 @@ fn test_next_token() {
     }
   ];
 
-  let tokenizer = Tokenizer::new(input.to_string());
+  let mut lexer = Lexer::new(input.to_string());
 
   for test in &tests {
-    let next_token = tokenizer.next_token().token;
-    assert_eq!(test.token, next_token);
+    let next_token = lexer.next_token();
+    println!("test: {:?}, next: {:?}, lexer: {:?}", test, next_token, lexer);
+    assert_eq!(test.token, next_token.token);
+    assert_eq!(test.literal, next_token.literal)
   }
 }

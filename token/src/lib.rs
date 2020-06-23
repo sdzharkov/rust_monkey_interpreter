@@ -54,21 +54,19 @@ pub struct Token {
     pub literal: String,
 }
 
-pub fn hello() {
-    println!("Hello, world!");
-}
-  
-
-pub struct Tokenizer {
-    input: String,
-}
-
-impl Tokenizer {
-    pub fn new(input: String) -> Self {
-        unimplemented!();
+impl Token {
+    pub fn next_token(character: &char) -> Token {
+        match character {
+            '=' => Token { token: TokenType::ASSIGN, literal: character.to_string() },
+            ';' => Token { token: TokenType::SEMICOLON, literal: character.to_string() },
+            '(' => Token { token: TokenType::LPAREN, literal: character.to_string() },
+            ')' => Token { token: TokenType::RPAREN, literal: character.to_string() },
+            ',' => Token { token: TokenType::COMMA, literal: character.to_string() },
+            '+' => Token { token: TokenType::PLUS, literal: character.to_string() },
+            '{' => Token { token: TokenType::LBRACE, literal: character.to_string() },
+            '}' => Token { token: TokenType::RBRACE, literal: character.to_string() },
+            '0' => Token { token: TokenType::EOF, literal: character.to_string() },
+            _ => Token { token: TokenType::ILLEGAL, literal: character.to_string() }
+        }
     }
-
-    pub fn next_token(&self) -> Token {
-        unimplemented!();
-    } 
 }
