@@ -1,32 +1,3 @@
-#[cfg(test)]
-mod tests {
-    #[test]
-    fn it_works() {
-        assert_eq!(2 + 2, 4);
-    }
-}
-
-// enum TokenType {
-//     ILLEGAL,
-//     EOF    ,
-//     IDENT = "IDENT", // add, foobar, x, y, ...,
-//     INT   = "INT",   // 1343456,
-    
-//     // Operators
-//     ASSIGN   = "=",
-//     PLUS     = "+",
-//     // Delimiters
-//     COMMA     = ",",
-//     SEMICOLON = ";",
-//     LPAREN = "(",
-//     RPAREN = ")",
-//     LBRACE = "{",
-//     RBRACE = "}",
-//     // Keywords
-//     FUNCTION = "FUNCTION",
-//     LET      = "LET",
-// }
-
 #[derive(Debug, PartialEq, Eq)]
 pub enum TokenType {
     ILLEGAL,

@@ -41,6 +41,7 @@ fn test_next_token() {
   ];
 
   let mut lexer = Lexer::new(input.to_string());
+  println!("lexer: {:?}", lexer);
 
   for test in &tests {
     let next_token = lexer.next_token();

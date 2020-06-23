@@ -27,7 +27,7 @@ impl Lexer {
             self.ch = '\0';
         } else {
             // @TODO: use alternative rescueing 
-            self.ch = self.input.chars().nth(self.position).unwrap();
+            self.ch = self.input.chars().nth(self.read_position).unwrap();
         }
         self.position = self.read_position;
         self.read_position += 1;
@@ -35,7 +35,9 @@ impl Lexer {
 
     // @TODO: is it possible for this function to not be mutable?
     pub fn next_token(&mut self) -> Token {
+        let token = Token::next_token(&self.ch);
         self.read_char();
-        Token::next_token(&self.ch)
+
+        token
     } 
 }
