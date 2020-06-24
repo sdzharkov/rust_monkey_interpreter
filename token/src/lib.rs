@@ -40,4 +40,11 @@ impl Token {
             _ => Token { token: TokenType::ILLEGAL, literal: character.to_string() }
         }
     }
+
+    pub fn next_identifier_token(ident: String) -> Token {
+        match ident.as_str() {
+            "let" => Token { token: TokenType::LET, literal: ident },
+            _ => Token { token: TokenType::IDENT(ident.clone()), literal: ident }
+        }
+    }
 }
