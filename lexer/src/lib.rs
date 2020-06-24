@@ -48,65 +48,84 @@ impl Lexer {
         while self.ch.is_numeric() {
             self.read_char();
         }
-
         self.input[position..self.position].to_string()
     }
 
+    // @TODO: Refactor to make this cleaner
     pub fn next_token(&mut self) -> Token {
         self.skip_whitespace();
 
-        let token: Token = match &self.ch {
-            '=' => Token {
-                token: TokenType::ASSIGN,
-                literal: self.ch.to_string(),
-            },
-            ';' => Token {
-                token: TokenType::SEMICOLON,
-                literal: self.ch.to_string(),
-            },
-            '(' => Token {
-                token: TokenType::LPAREN,
-                literal: self.ch.to_string(),
-            },
-            ')' => Token {
-                token: TokenType::RPAREN,
-                literal: self.ch.to_string(),
-            },
-            ',' => Token {
-                token: TokenType::COMMA,
-                literal: self.ch.to_string(),
-            },
-            '+' => Token {
-                token: TokenType::PLUS,
-                literal: self.ch.to_string(),
-            },
-            '{' => Token {
-                token: TokenType::LBRACE,
-                literal: self.ch.to_string(),
-            },
-            '}' => Token {
-                token: TokenType::RBRACE,
-                literal: self.ch.to_string(),
-            },
-            '0' => Token {
-                token: TokenType::EOF,
-                literal: self.ch.to_string(),
-            },
+        let token: Token;
+        match &self.ch {
+            '=' => {
+                token = Token {
+                    token: TokenType::ASSIGN,
+                    literal: self.ch.to_string(),
+                }
+            }
+            ';' => {
+                token = Token {
+                    token: TokenType::SEMICOLON,
+                    literal: self.ch.to_string(),
+                }
+            }
+            '(' => {
+                token = Token {
+                    token: TokenType::LPAREN,
+                    literal: self.ch.to_string(),
+                }
+            }
+            ')' => {
+                token = Token {
+                    token: TokenType::RPAREN,
+                    literal: self.ch.to_string(),
+                }
+            }
+            ',' => {
+                token = Token {
+                    token: TokenType::COMMA,
+                    literal: self.ch.to_string(),
+                }
+            }
+            '+' => {
+                token = Token {
+                    token: TokenType::PLUS,
+                    literal: self.ch.to_string(),
+                }
+            }
+            '{' => {
+                token = Token {
+                    token: TokenType::LBRACE,
+                    literal: self.ch.to_string(),
+                }
+            }
+            '}' => {
+                token = Token {
+                    token: TokenType::RBRACE,
+                    literal: self.ch.to_string(),
+                }
+            }
+            '0' => {
+                token = Token {
+                    token: TokenType::EOF,
+                    literal: self.ch.to_string(),
+                }
+            }
             _ => {
                 if is_letter(&self.ch) {
                     let identifier = self.read_identifier();
-                    Token::lookup_ident(identifier)
+                    return Token::lookup_ident(identifier);
                 } else if self.ch.is_numeric() {
                     let num = self.read_number();
-                    Token {
+                    return Token {
                         token: TokenType::INT,
                         literal: num,
-                    }
+                    };
                 } else {
-                    Token {
+                    return Token {
                         token: TokenType::ILLEGAL,
                         literal: self.ch.to_string(),
-                    }
+                    };
                 }
             }
         };
