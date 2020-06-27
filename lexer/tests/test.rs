@@ -338,6 +338,43 @@ if (5 < 10) {
       token: TokenType::RBRACE,
       literal: "}".to_string(),
     },
+    Token {
+      token: TokenType::INT,
+      literal: "10".to_string(),
+    },
+    Token {
+      token: TokenType::EQ,
+      literal: "==".to_string(),
+    },
+    Token {
+      token: TokenType::INT,
+      literal: "10".to_string(),
+    },
+    Token {
+      token: TokenType::SEMICOLON,
+      literal: ";".to_string(),
+    },
+    Token {
+      token: TokenType::INT,
+      literal: "10".to_string(),
+    },
+    Token {
+      token: TokenType::NOTEQ,
+      literal: "!=".to_string(),
+    },
+    Token {
+      token: TokenType::INT,
+      literal: "9".to_string(),
+    },
+    Token {
+      token: TokenType::SEMICOLON,
+      literal: ";".to_string(),
+    },
+    // Differs here - rust has no EOF token
+    // Token {
+    //   token: TokenType::EOF,
+    //   literal: "".to_string(),
+    // },
   ];
 
   let mut lexer = Lexer::new(input.to_string());

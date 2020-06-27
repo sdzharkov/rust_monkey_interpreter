@@ -51,6 +51,14 @@ impl Lexer {
         self.input[position..self.position].to_string()
     }
 
+    pub fn peek_char(&mut self) -> char {
+        if self.read_position >= self.input.len() {
+            return '\0';
+        }
+
+        return self.input.chars().nth(self.read_position).unwrap();
+    }
+
     // @TODO: Refactor to make this cleaner
     pub fn next_token(&mut self) -> Token {
         self.skip_whitespace();
@@ -58,9 +66,31 @@ impl Lexer {
         let token: Token;
         match &self.ch {
             '=' => {
-                token = Token {
-                    token: TokenType::ASSIGN,
-                    literal: self.ch.to_string(),
+                if self.peek_char() == '=' {
+                    self.read_char();
+                    token = Token {
+                        token: TokenType::EQ,
+                        literal: "==".to_string(),
+                    }
+                } else {
+                    token = Token {
+                        token: TokenType::ASSIGN,
+                        literal: self.ch.to_string(),
+                    }
+                }
+            }
+            '!' => {
+                if self.peek_char() == '=' {
+                    self.read_char();
+                    token = Token {
+                        token: TokenType::NOTEQ,
+                        literal: "!=".to_string(),
+                    }
+                } else {
+                    token = Token {
+                        token: TokenType::BANG,
+                        literal: self.ch.to_string(),
+                    }
                 }
             }
             ';' => {
@@ -96,12 +126,6 @@ impl Lexer {
             '-' => {
                 token = Token {
                     token: TokenType::MINUS,
-                    literal: self.ch.to_string(),
-                }
-            }
-            '!' => {
-                token = Token {
-                    token: TokenType::BANG,
                     literal: self.ch.to_string(),
                 }
             }
@@ -141,12 +165,12 @@ impl Lexer {
                     literal: self.ch.to_string(),
                 }
             }
-            '0' => {
-                token = Token {
-                    token: TokenType::EOF,
-                    literal: self.ch.to_string(),
-                }
-            }
+            // '\0' => {
+            //     token = Token {
+            //         token: TokenType::EOF,
+            //         literal: self.ch.to_string(),
+            //     }
+            // }
             _ => {
                 if is_letter(&self.ch) {
                     let identifier = self.read_identifier();
