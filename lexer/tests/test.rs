@@ -64,6 +64,17 @@ let add = fn(x, y) {
 };
 
 let result = add(five, ten);
+!-/*5;
+5 < 10 > 5;
+
+if (5 < 10) {
+  return true;
+} else {
+  return false;
+}
+
+10 == 10;
+10 != 9;
   ";
 
   let tests = [
@@ -210,6 +221,122 @@ let result = add(five, ten);
     Token {
       token: TokenType::SEMICOLON,
       literal: ";".to_string(),
+    },
+    Token {
+      token: TokenType::BANG,
+      literal: "!".to_string(),
+    },
+    Token {
+      token: TokenType::MINUS,
+      literal: "-".to_string(),
+    },
+    Token {
+      token: TokenType::SLASH,
+      literal: "/".to_string(),
+    },
+    Token {
+      token: TokenType::ASTERISK,
+      literal: "*".to_string(),
+    },
+    Token {
+      token: TokenType::INT,
+      literal: "5".to_string(),
+    },
+    Token {
+      token: TokenType::SEMICOLON,
+      literal: ";".to_string(),
+    },
+    Token {
+      token: TokenType::INT,
+      literal: "5".to_string(),
+    },
+    Token {
+      token: TokenType::LT,
+      literal: "<".to_string(),
+    },
+    Token {
+      token: TokenType::INT,
+      literal: "10".to_string(),
+    },
+    Token {
+      token: TokenType::GT,
+      literal: ">".to_string(),
+    },
+    Token {
+      token: TokenType::INT,
+      literal: "5".to_string(),
+    },
+    Token {
+      token: TokenType::SEMICOLON,
+      literal: ";".to_string(),
+    },
+    Token {
+      token: TokenType::IF,
+      literal: "if".to_string(),
+    },
+    Token {
+      token: TokenType::LPAREN,
+      literal: "(".to_string(),
+    },
+    Token {
+      token: TokenType::INT,
+      literal: "5".to_string(),
+    },
+    Token {
+      token: TokenType::LT,
+      literal: "<".to_string(),
+    },
+    Token {
+      token: TokenType::INT,
+      literal: "10".to_string(),
+    },
+    Token {
+      token: TokenType::RPAREN,
+      literal: ")".to_string(),
+    },
+    Token {
+      token: TokenType::LBRACE,
+      literal: "{".to_string(),
+    },
+    Token {
+      token: TokenType::RETURN,
+      literal: "return".to_string(),
+    },
+    Token {
+      token: TokenType::TRUE,
+      literal: "true".to_string(),
+    },
+    Token {
+      token: TokenType::SEMICOLON,
+      literal: ";".to_string(),
+    },
+    Token {
+      token: TokenType::RBRACE,
+      literal: "}".to_string(),
+    },
+    Token {
+      token: TokenType::ELSE,
+      literal: "else".to_string(),
+    },
+    Token {
+      token: TokenType::LBRACE,
+      literal: "{".to_string(),
+    },
+    Token {
+      token: TokenType::RETURN,
+      literal: "return".to_string(),
+    },
+    Token {
+      token: TokenType::FALSE,
+      literal: "false".to_string(),
+    },
+    Token {
+      token: TokenType::SEMICOLON,
+      literal: ";".to_string(),
+    },
+    Token {
+      token: TokenType::RBRACE,
+      literal: "}".to_string(),
     },
   ];
 

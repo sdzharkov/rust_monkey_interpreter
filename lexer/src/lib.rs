@@ -93,6 +93,42 @@ impl Lexer {
                     literal: self.ch.to_string(),
                 }
             }
+            '-' => {
+                token = Token {
+                    token: TokenType::MINUS,
+                    literal: self.ch.to_string(),
+                }
+            }
+            '!' => {
+                token = Token {
+                    token: TokenType::BANG,
+                    literal: self.ch.to_string(),
+                }
+            }
+            '*' => {
+                token = Token {
+                    token: TokenType::ASTERISK,
+                    literal: self.ch.to_string(),
+                }
+            }
+            '/' => {
+                token = Token {
+                    token: TokenType::SLASH,
+                    literal: self.ch.to_string(),
+                }
+            }
+            '<' => {
+                token = Token {
+                    token: TokenType::LT,
+                    literal: self.ch.to_string(),
+                }
+            }
+            '>' => {
+                token = Token {
+                    token: TokenType::GT,
+                    literal: self.ch.to_string(),
+                }
+            }
             '{' => {
                 token = Token {
                     token: TokenType::LBRACE,

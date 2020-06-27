@@ -7,6 +7,12 @@ pub enum TokenType {
     // Operators
     ASSIGN,
     PLUS,
+    MINUS,
+    BANG,
+    ASTERISK,
+    SLASH,
+    LT,
+    GT,
     // Delimiters
     COMMA,
     SEMICOLON,
@@ -17,6 +23,11 @@ pub enum TokenType {
     // Keywords
     FUNCTION,
     LET,
+    TRUE,
+    FALSE,
+    IF,
+    ELSE,
+    RETURN,
 }
 #[derive(Debug, PartialEq, Eq)]
 pub struct Token {
@@ -33,6 +44,26 @@ impl Token {
             },
             "fn" => Token {
                 token: TokenType::FUNCTION,
+                literal: ident,
+            },
+            "true" => Token {
+                token: TokenType::TRUE,
+                literal: ident,
+            },
+            "false" => Token {
+                token: TokenType::FALSE,
+                literal: ident,
+            },
+            "if" => Token {
+                token: TokenType::IF,
+                literal: ident,
+            },
+            "else" => Token {
+                token: TokenType::ELSE,
+                literal: ident,
+            },
+            "return" => Token {
+                token: TokenType::RETURN,
                 literal: ident,
             },
             _ => Token {
