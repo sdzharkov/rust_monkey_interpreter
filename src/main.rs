@@ -1,6 +1,5 @@
-use token;
+use repl;
 
 fn main() {
-    println!("Hello, world!");
-    token::hello();
+    repl::start();
 }
